@@ -19,7 +19,7 @@ class IGMessageReader:
             file.write(textsaver)
             file.close()
 
-    def wordcounter(self, text):
+    def wordcounter(self, text):  #it doesn't work
         counter = 0
         texttosearchfor = '<div class="_3-95 _a6-p"><div><div></div><div>'
         messagestart = reduce(lambda x, y: x + [y.start()], re.finditer(texttosearchfor, text), [])
@@ -29,6 +29,7 @@ class IGMessageReader:
             print(text[indexstart + len(texttosearchfor): indexstart + len(texttosearchfor) + 7])
             if text[indexstart + len(texttosearchfor): indexstart + len(texttosearchfor) + 6] != "</div>":
                 counter += 1
+       
 
     def messagereader(self):
         statistics = {}
