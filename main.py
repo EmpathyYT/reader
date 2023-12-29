@@ -1,6 +1,7 @@
 import os
 import json
 import matplotlib.pyplot as plt
+import random
 
 
 class IGMessageReader:
@@ -46,7 +47,7 @@ class IGMessageReader:
             ax.bar_label(hbars)
             ax.set_xlim(right=newdatayaxis[0] + newdatayaxis[0] / 5)
             plt.tight_layout()
-            fig.savefig("messagecountfig")
+            fig.savefig(f"messagecountfig{random.randint(1, 2000)}")
 
             i = 0
 
@@ -67,7 +68,7 @@ class IGMessageReader:
             ax.bar_label(hbars)
             ax.set_xlim(right=newdatayaxis[0] + newdatayaxis[0] / 5)
             plt.tight_layout()
-            fig.savefig("wordcountfig")
+            fig.savefig(f"wordcountfig{random.randint(1, 2000)}")
 
             i = 0
 
@@ -88,7 +89,7 @@ class IGMessageReader:
             ax.bar_label(hbars)
             ax.set_xlim(right=newdatayaxis[0] + newdatayaxis[0] / 5)
             plt.tight_layout()
-            fig.savefig("reelcountfig")
+            fig.savefig(f"reelcountfig{random.randint(1, 2000)}")
 
     def messagereader(self):
         statistics = {}
