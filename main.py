@@ -123,14 +123,13 @@ class IGMessageReader:
                             contactreelcount += 1
 
                     totalreelcount += contactreelcount
-            if len(file['participants']) > 2:
-                continue
+
             statistics.update({name: [contactmessages, contactwordcount, contactreelcount]})
 
             i += 1
-            stastic = self.stastisticer(name, contactmessages, contactwordcount, contactreelcount, i)
-            textsaver += stastic
-            print(stastic)
+            statistic = self.stastisticer(name, contactmessages, contactwordcount, contactreelcount, i)
+            textsaver += statistic
+            print(statistic)
 
         print(
             f"Total Message Count: {messagecount} || Total Word Count: {totalwordcount} || Total Reel Count: {totalreelcount}")
