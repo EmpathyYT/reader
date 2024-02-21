@@ -136,8 +136,6 @@ class IGMessageReader:
             textsaver += statistic
             print(statistic)
 
-            if len(file['participants']) > 2:
-                continue
             statistics.update({name: [contactmessages, contactwordcount, contactreelcount]})
 
         print(
