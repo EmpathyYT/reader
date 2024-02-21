@@ -31,8 +31,9 @@ class IGMessageReader:
     def plotter(self, data, plot: bool):
         if plot:
             i = 0
+            x = 8 if len(list(data.items())) >= 8 else len(list(data.items()))
             newdata = {}
-            while i < 8:
+            while i < x:
                 key, value = list(data.items())[i]
                 newdata.update({key: value})
                 i += 1
@@ -49,11 +50,13 @@ class IGMessageReader:
             plt.tight_layout()
             fig.savefig(f"messagecountfig{random.randint(1, 2000)}")
 
-            i = 0
-
             wordcountsorteddata = dict(sorted(data.items(), key=lambda item: item[1][1], reverse=True))
+
+            i = 0
+            x = 8 if len(list(wordcountsorteddata.items())) >= 8 else len(list(wordcountsorteddata.items()))
+
             newdata = {}
-            while i < 8:
+            while i < x:
                 key, value = list(wordcountsorteddata.items())[i]
                 newdata.update({key: value})
                 i += 1
@@ -70,11 +73,13 @@ class IGMessageReader:
             plt.tight_layout()
             fig.savefig(f"wordcountfig{random.randint(1, 2000)}")
 
-            i = 0
-
             reelcountsorteddata = dict(sorted(data.items(), key=lambda item: item[1][2], reverse=True))
+
+            i = 0
+            x = 8 if len(list(reelcountsorteddata.items())) > 8 else len(list(reelcountsorteddata.items()))
+
             newdata = {}
-            while i < 8:
+            while i < x:
                 key, value = list(reelcountsorteddata.items())[i]
                 newdata.update({key: value})
                 i += 1
@@ -131,6 +136,10 @@ class IGMessageReader:
             textsaver += statistic
             print(statistic)
 
+            if len(file['participants']) > 2:
+                continue
+            statistics.update({name: [contactmessages, contactwordcount, contactreelcount]})
+
         print(
             f"Total Message Count: {messagecount} || Total Word Count: {totalwordcount} || Total Reel Count: {totalreelcount}")
         textsaver += (
@@ -140,7 +149,8 @@ class IGMessageReader:
         #
         topnums = "Top 50 contacts:\n\n"
         i = 0
-        while i < 50:
+        x = 50 if len(list(sortedstats.keys())) >= 50 else len(list(sortedstats.keys()))
+        while i < x:
             topnums += f"{i + 1}. Contact Name: {list(sortedstats.keys())[i]} || Message Count: {list(sortedstats.values())[i][0]} || Word Count: {list(sortedstats.values())[i][1]} || Reel Count: {list(sortedstats.values())[i][2]}\n"
             i += 1
         print(topnums)
